@@ -28,25 +28,16 @@ It doesn't matter what values are set beyond the returned length.
 
 class Solution {
     func removeElement(_ nums: inout [Int], _ val: Int) -> Int {
-		var left = 0
-		var right = nums.count - 1
+		var currentPosition = 0
 
-		while left <= right {
-			if nums[right] == val {
-				right -= 1
-				continue
-			}
-
-			if nums[left] == val {
-				nums.swapAt(left, right)
-				left += 1
-				right -= 1
-			} else {
-				left += 1
+		for idx in 0..<nums.count {
+			if nums[idx] != val {
+				nums[currentPosition] = nums[idx]
+				currentPosition += 1
 			}
 		}
 
-		return left
+		return currentPosition
     }
 }
 
